@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+      body {
+        background: #fff;
+        height: 100vh;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      main {
+        position: relative;
+        width: 100%;
+        height: 200px;
+      }
+      main div {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      main div:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(71, 206, 255, 0.2);
+      }
+      main div:last-child {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background: rgba(71, 206, 255, 0.2);
+      }
+    </style>
+</head>
+<body>
+<main>
+  <div></div>
+  <div></div>
+</main>
+<div>
+  当前路径：
+  <script>
+        document.write(window.location.href);
+      </script>
+</div>
+<div>
+  <div>JsBridge</div>
+  <input type="text" id="input1" />
+  <input type="button" value="JsBridge.toast" onclick="toast()" />
+</div>
+<div>
+  <div>Scheme</div>
+  <input type="text" id="input2" />
+  <input type="button" value="挟持过的window.open" onclick="debug()" />
+  <input type="button" value="未挟持过的window.open " onclick="goto()" />
+</div>
+<div>
+  <div>prompt</div>
+  <input type="text" id="input3" />
+  <input type="button" value="window.prompt" onclick="doprompt()" />
+</div>
+<div>发送数据：<span id="reqData"></span></div>
+<div>返回数据：<span id="resData"></span></div>
+<script>
+      function toast() {
+        const value =
+          document.getElementById("input1").value || "http://10.8.60.7:8080";
+        window.JsBridge.showToast(value);
+      }
+
+      function transform(action, data = {}) {
+        var baseUrl = "failte://android";
+        return action
+          ? `${baseUrl}?code=${action}&data=${JSON.stringify(data)}`
+          : data.data;
+      }
+
+      function debug() {
+        const value =
+          document.getElementById("input2").value || "http://10.8.60.7:8080";
+        const url = transform("toast", { data: value });
+        document.getElementById("reqData").innerText = url;
+        window.open(url);
+      }
+
+      function goto() {
+        const value =
+          document.getElementById("input2").value || "http://10.8.60.7:8080";
+        const url = transform("", { data: value });
+        document.getElementById("reqData").innerText = url;
+        window.open(url);
+      }
+
+      function transform2(action, data = {}) {
+        var baseUrl = "cordova://android";
+        return action
+          ? `${baseUrl}?code=${action}&data=${JSON.stringify(data)}`
+          : data.data;
+      }
+
+      function doprompt() {
+        const value = document.getElementById("input2").value;
+        const url = transform2("plugin", { data: value });
+        document.getElementById("reqData").innerText = url;
+        const resJson = window.prompt(url);
+        document.getElementById("resData").innerText = resJson;
+      }
+    </script>
+</body>
+</html>
