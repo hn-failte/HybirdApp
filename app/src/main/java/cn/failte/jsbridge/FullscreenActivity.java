@@ -75,6 +75,7 @@ public class FullscreenActivity extends AppCompatActivity {
         webView.addJavascriptInterface(method, JavaScriptMethod.JAVASCRIPTINTERFACE);
 
         webView.setWebChromeClient(new WebChromeClient() {
+            @Override
             public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
                 Log.v("url", url);
                 Log.v("message", message);
@@ -89,7 +90,7 @@ public class FullscreenActivity extends AppCompatActivity {
                             JSONObject json = new JSONObject(data);
                             String toast = (String)json.optString("data");
                             Log.v("plugin", toast);
-                            result.confirm("\"{\"code\": 0}\", \"data\": {}");
+                            result.confirm("{\"code\": 0}\", \"data\": {}\"}");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
