@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.failte.jsbridge">
+    package="cn.failte.hybirdapp">
 
     <application
         android:allowBackup="true"
@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.JsBridge">
+        android:theme="@style/Theme.HybirdApp">
         <activity
-            android:name=".FullscreenActivity"
+            android:name="cn.failte.hybirdapp.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Theme.JsBridge.Fullscreen">
+            android:theme="@style/Theme.HybirdApp.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

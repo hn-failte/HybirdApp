@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/fullscreenBackgroundColor"
-    android:theme="@style/ThemeOverlay.JsBridge.FullscreenContainer"
+    android:theme="@style/ThemeOverlay.HybirdApp.FullscreenContainer"
     tools:context=".FullscreenActivity">
 
     <!-- This FrameLayout insets its children based on system windows using
@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.JsBridge.ButtonBar.Fullscreen"
+            style="@style/Widget.Theme.HybirdApp.ButtonBar.Fullscreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"

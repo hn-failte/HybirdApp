@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "JsBridge"
+rootProject.name = "HybirdApp"
